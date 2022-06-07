@@ -4,20 +4,19 @@ const simpleGit = require('simple-git');
 
 const git = simpleGit();
 
-app.get("/", (request, response) => {
+app.get("/", async(request, response) => {
 
-  response.send("Hello World!");
-  let k = function(){
-    "jjdklfd"
-}
-git.init()
 
-git.addRemote('origin','https://github.com/umanoj9339/cc.git')
+  
+await git.init()
 
-git.add()
+//await git.addRemote('origin','https://github.com/umanoj9339/cc.git')
 
-git.commit("tryCatch",['LOL.txt','noM.tet','simple.js'] )
-git.push(['-u'],'origin','main')
+await git.add('.')
+
+await git.commit("tryCatch2")
+await git.push(['set-upstream'],'origin','main')
 console.log("Done")
+response.send("Hello World!");
 });
 app.listen(3006);
